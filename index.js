@@ -1,4 +1,10 @@
-import { colorPicker, resetColorArray, setTile, setTiles, tiles } from "./scripts/colorPicker.js";
+import {
+  colorPicker,
+  resetColorArray,
+  setTile,
+  setTiles,
+  tiles,
+} from "./scripts/colorPicker.js";
 import { copyCommand } from "./scripts/commandGen.js";
 import {
   game,
@@ -102,20 +108,50 @@ export let colors = {
 };
 document.getElementById("Copy").addEventListener("click", copyCommand);
 
-
-document.getElementById("x8x8").addEventListener("click", function() {
+document.getElementById("x8x8").addEventListener("click", function () {
   tilesPerRow = 8;
   tilesPerCol = 8;
   resetColorArray();
 });
-document.getElementById("x16x16").addEventListener("click", function() {
+document.getElementById("x16x16").addEventListener("click", function () {
   tilesPerRow = 16;
   tilesPerCol = 16;
   resetColorArray();
-
 });
 
+let glassPath = "./assets/GlassAssets/";
+export let glassIcons = new Map();
+glassIcons.set("purple", new Image());
+glassIcons.get("purple").src = `${glassPath}Purple.png`;
+glassIcons.set("magenta", new Image());
+glassIcons.get("magenta").src = `${glassPath}Magenta.png`;
+glassIcons.set("pink", new Image());
+glassIcons.get("pink").src = `${glassPath}Pink.png`;
+glassIcons.set("blue", new Image());
+glassIcons.get("blue").src = `${glassPath}Blue.png`;
+glassIcons.set("cyan", new Image());
+glassIcons.get("cyan").src = `${glassPath}Cyan.png`;
+glassIcons.set("#20B2AA", new Image());
+glassIcons.get("#20B2AA").src = `${glassPath}LightBlue.png`;
+glassIcons.set("green", new Image());
+glassIcons.get("green").src = `${glassPath}Green.png`;
+glassIcons.set("lime", new Image());
+glassIcons.get("lime").src = `${glassPath}Lime.png`;
+glassIcons.set("yellow", new Image());
+glassIcons.get("yellow").src = `${glassPath}Yellow.png`;
+glassIcons.set("orange", new Image());
+glassIcons.get("orange").src = `${glassPath}Orange.png`;
+glassIcons.set("red", new Image());
+glassIcons.get("red").src = `${glassPath}Red.png`;
+glassIcons.set("white", new Image());
+glassIcons.get("white").src = `${glassPath}White.png`;
+glassIcons.set("black", new Image());
+glassIcons.get("black").src = `${glassPath}Black.png`;
+glassIcons.set("grey", new Image());
+glassIcons.get("grey").src = `${glassPath}Grey.png`;
 
+glassIcons.set("rgb(124,113,103)", new Image());
+glassIcons.get("rgb(124,113,103)").src = `${glassPath}Brown.png`;
 
 export function updateGameArea() {
   var delta = (Date.now() - lastRender) / 1000;
@@ -159,24 +195,49 @@ export function updateGameArea() {
           tileH - spaceInBetweenTiles
         )
       ) {
-        fill(currentColor);
-
+        //fill(currentColor);
+        renderImage(
+          glassIcons.get(currentColor),
+          i * tileW + (spaceInBetweenTiles + xOffset),
+          j * tileH + (spaceInBetweenTiles + yOffset),
+          tileW - spaceInBetweenTiles,
+          tileH - spaceInBetweenTiles
+        );
         if (mouseDown) {
           //(index/tilesPerRow) + index % tilesPerRow
           //tiles[counter] = currentColor;
           setTile(counter, currentColor);
         }
       } else {
-        if (!!tiles[counter]) fill(tiles[counter]);
-        else fill("black");
+        if (!!tiles[counter]) {
+          try {
+            renderImage(
+              glassIcons.get(tiles[counter]),
+              i * tileW + (spaceInBetweenTiles + xOffset),
+              j * tileH + (spaceInBetweenTiles + yOffset),
+              tileW - spaceInBetweenTiles,
+              tileH - spaceInBetweenTiles
+            );
+          } catch (err) {
+            fill(tiles[counter]);
+            rect(
+              i * tileW + (spaceInBetweenTiles + xOffset),
+              j * tileH + (spaceInBetweenTiles + yOffset),
+              tileW - spaceInBetweenTiles,
+              tileH - spaceInBetweenTiles
+            );
+          }
+        } else {
+          fill("black");
+          rect(
+            i * tileW + (spaceInBetweenTiles + xOffset),
+            j * tileH + (spaceInBetweenTiles + yOffset),
+            tileW - spaceInBetweenTiles,
+            tileH - spaceInBetweenTiles
+          );
+        }
       }
 
-      rect(
-        i * tileW + (spaceInBetweenTiles + xOffset),
-        j * tileH + (spaceInBetweenTiles + yOffset),
-        tileW - spaceInBetweenTiles,
-        tileH - spaceInBetweenTiles
-      );
       counter++;
     }
   }

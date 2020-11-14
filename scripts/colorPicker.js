@@ -5,6 +5,7 @@ import {
   setCol,
   tilesPerCol,
   tilesPerRow,
+  glassIcons,
 } from "../index.js";
 import {
   fill,
@@ -14,6 +15,7 @@ import {
   mouseX,
   mouseY,
   rect,
+  renderImage,
   setTitle,
   width,
 } from "./toolbox.js";
@@ -28,7 +30,7 @@ export function setTile(i, colorID) {
 }
 
 let colorArray;
-export function resetColorArray(){
+export function resetColorArray() {
   colorArray = undefined;
 }
 export function colorPicker() {
@@ -42,8 +44,19 @@ export function colorPicker() {
   let ycounter = 0;
   let xcounter = 0;
   for (let i = 0; i < colorArray.length; i++) {
-    fill(colorArray[i]);
-    rect(width - tileW - xcounter * tileW, ycounter * tileH, tileW, tileH);
+    try {
+      renderImage(
+        glassIcons.get(colorArray[i]),
+        width - tileW - xcounter * tileW,
+        ycounter * tileH,
+        tileW,
+        tileH
+      );
+    } catch (err) {
+      console.log(err);
+      fill(colorArray[i]);
+      rect(width - tileW - xcounter * tileW, ycounter * tileH, tileW, tileH);
+    }
 
     if (
       mousePressed &&
