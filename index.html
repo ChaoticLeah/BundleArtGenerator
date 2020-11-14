@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Hide scrollbars */
+    }
+    body {
+      background-color: black;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      image-rendering: optimizeSpeed; /* Older versions of FF          */
+      image-rendering: -moz-crisp-edges; /* FF 6.0+                       */
+      image-rendering: -webkit-optimize-contrast; /* Safari                        */
+      image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+      image-rendering: pixelated; /* Awesome future-browsers       */
+      -ms-interpolation-mode: nearest-neighbor; /* IE                            */
+    }
+
+    #Copy{
+      background-color: #CBAA4B;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+      position: absolute;
+      bottom: 15px;
+      right: 50%;
+      -ms-transform: translateX(50%);
+      transform: translateX(50%);
+    }
+
+    #howto{
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      width: 25%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      color: white;
+    }
+    a{
+     color:white; 
+    }
+    #title{
+      position: absolute;
+      top: 15px;
+      right: 50%;
+      -ms-transform: translateX(50%);
+      transform: translateX(50%);
+      color: white;
+    }
+  </style>
+  <head>
+    <title id = "Title">Loading</title>
+    <link rel="shortcut icon" id = "Icon" href="../assets/player/playerDown.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="index.js" type="module"></script>
+  <body>
+    <div id="canvasHolder"></div>
+    <h1 id = "title">Minecraft Bundle Art Generator</h1>
+    <button id="Copy">Copy Command!</button>
+    <p id = "howto">How Does it Work? <br> <br>Make some pixel art here. Click copy and put it in a command block, then activate it. Open your inventory and HOVER over the bundle to see your art. <br><br> - <a href="https://www.youtube.com/c/kevinwho">Made By KevinWho</a> <br><br><br></p>
+  </body>
+</html>
