@@ -20,11 +20,17 @@ import {
 
 export let tiles = [];
 
+export function setTiles(i) {
+  tiles = i;
+}
 export function setTile(i, colorID) {
   tiles[i] = colorID;
 }
 
 let colorArray;
+export function resetColorArray(){
+  colorArray = undefined;
+}
 export function colorPicker() {
   if (!colorArray) {
     tiles = new Array(tilesPerRow * tilesPerCol);

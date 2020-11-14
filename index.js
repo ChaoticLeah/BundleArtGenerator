@@ -1,4 +1,4 @@
-import { colorPicker, setTile, tiles } from "./scripts/colorPicker.js";
+import { colorPicker, resetColorArray, setTile, setTiles, tiles } from "./scripts/colorPicker.js";
 import { copyCommand } from "./scripts/commandGen.js";
 import {
   game,
@@ -98,9 +98,24 @@ export let colors = {
   white: "white_stained_glass_pane",
   black: "black_stained_glass_pane",
   grey: "grey_stained_glass_pane",
-  brown: "brown_stained_glass_pane",
+  "rgb(124,113,103)": "brown_stained_glass_pane",
 };
 document.getElementById("Copy").addEventListener("click", copyCommand);
+
+
+document.getElementById("x8x8").addEventListener("click", function() {
+  tilesPerRow = 8;
+  tilesPerCol = 8;
+  resetColorArray();
+});
+document.getElementById("x16x16").addEventListener("click", function() {
+  tilesPerRow = 16;
+  tilesPerCol = 16;
+  resetColorArray();
+
+});
+
+
 
 export function updateGameArea() {
   var delta = (Date.now() - lastRender) / 1000;
@@ -145,6 +160,7 @@ export function updateGameArea() {
         )
       ) {
         fill(currentColor);
+
         if (mouseDown) {
           //(index/tilesPerRow) + index % tilesPerRow
           //tiles[counter] = currentColor;
