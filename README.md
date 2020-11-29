@@ -1,4 +1,4 @@
-# BundleArtGenerator
+# Bundle Art Generator
 
 https://kevinwh0.github.io/BundleArtGenerator/index.html
 
