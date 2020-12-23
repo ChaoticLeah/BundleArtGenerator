@@ -22,8 +22,8 @@
       -ms-interpolation-mode: nearest-neighbor; /* IE                            */
     }
 
-    #Copy{
-      background-color: #CBAA4B;
+    #Copy {
+      background-color: #cbaa4b;
       border: none;
       color: white;
       padding: 15px 32px;
@@ -39,7 +39,7 @@
       transform: translateX(50%);
     }
 
-    #howto{
+    #howto {
       position: absolute;
       top: 50%;
       left: 20px;
@@ -48,10 +48,10 @@
       transform: translateY(-50%);
       color: white;
     }
-    a{
-     color:white; 
+    a {
+      color: white;
     }
-    #title{
+    #title {
       position: absolute;
       top: 15px;
       right: 50%;
@@ -60,8 +60,8 @@
       color: white;
     }
 
-    button{
-      background-color: #CBAA4B;
+    button {
+      background-color: #cbaa4b;
       border: none;
       color: white;
       padding: 15px 32px;
@@ -70,7 +70,6 @@
       display: inline-block;
       font-size: 16px;
     }
-
 
     #x8x8 {
       position: absolute;
@@ -83,21 +82,40 @@
       bottom: 0px;
       left: 100px;
     }
+    #loadAutosave {
+      position: absolute;
+      bottom: 55px;
+      left: 0px;
+    }
   </style>
   <head>
-    <title id = "Title">Loading</title>
-    <link rel="shortcut icon" id = "Icon" href="../assets/player/playerDown.png">
+    <title id="Title">Loading</title>
+    <link
+      rel="shortcut icon"
+      id="Icon"
+      href="../assets/player/playerDown.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="index.js" type="module"></script>
   <body>
     <div id="canvasHolder"></div>
-    <h1 id = "title">Minecraft Bundle Art Generator</h1>
+    <h1 id="title">Minecraft Bundle Art Generator</h1>
     <button id="Copy">Copy Command!</button>
-    <p id = "howto">How Does it Work? <br> <br>Make some pixel art here. Click copy and put it in a command block, then activate it. Open your inventory and HOVER over the bundle to see your art. <br><br> - <a href="https://www.youtube.com/c/kevinwho">Made By KevinWho</a> <br><br><br><br><br> Note: Somtimes it may not allign up ingame.<br><br>Also Note: when using a 16X16 grid you will have to set the GUI SCALE lower than 3(it cant be on auto) for it to stay on screen.  </p>
-    <button id = "x8x8">8X8</button>
-    <button id = "x16x16">16X16</button>
-
+    <p id="howto">
+      How Does it Work? <br />
+      <br />Make some pixel art here. Click copy and put it in a command block,
+      then activate it. Open your inventory and HOVER over the bundle to see
+      your art. <br /><br />
+      - <a href="https://www.youtube.com/c/kevinwho">Made By KevinWho</a>
+      <br /><br /><br /><br /><br />
+      Note: Somtimes it may not allign up ingame.<br /><br />Also Note: when
+      using a 16X16 grid you will have to set the GUI SCALE lower than 3(it cant
+      be on auto) for it to stay on screen.
+    </p>
+    <button id="x8x8">8X8</button>
+    <button id="x16x16">16X16</button>
+    <button id="loadAutosave">Load Autosave</button>
   </body>
 </html>

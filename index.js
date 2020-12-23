@@ -119,6 +119,14 @@ document.getElementById("x16x16").addEventListener("click", function () {
   resetColorArray();
 });
 
+document.getElementById("loadAutosave").addEventListener("click", function () {
+  let data = JSON.parse(localStorage.getItem("Bundle_Art_Autosave")).data;
+  if (!!data) setTiles(data);
+  else alert("Error: There is no save data");
+  document.getElementById("loadAutosave").remove();
+  //console.log(data);
+});
+
 let glassPath = "./assets/GlassAssets/";
 export let glassIcons = new Map();
 glassIcons.set("purple", new Image());
@@ -207,6 +215,10 @@ export function updateGameArea() {
           //(index/tilesPerRow) + index % tilesPerRow
           //tiles[counter] = currentColor;
           setTile(counter, currentColor);
+          localStorage.setItem(
+            "Bundle_Art_Autosave",
+            JSON.stringify({ data: tiles })
+          );
         }
       } else {
         if (!!tiles[counter]) {
