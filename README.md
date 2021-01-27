@@ -23,5 +23,5 @@ Roadmap:
 
 - [x] Autosave
 - [ ] Save Slots
-- [ ] Color Picker
+- [x] Color Picker
 - [ ] Updated UI with separate settings menu
