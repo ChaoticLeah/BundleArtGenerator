@@ -31,6 +31,7 @@ import {
   setIcon,
   keyDown,
   keyPushed,
+  renderNotifications,
 } from "./scripts/toolbox.js";
 
 export let states = {
@@ -255,6 +256,6 @@ export function updateGameArea() {
   }
 
   colorPicker();
-
+  renderNotifications();
   resetMousePressed();
 }

@@ -121,6 +121,24 @@ export function roundedRect(x, y, width, height, radius) {
   ctx.fill();
 }
 
+export function rounded_Rect(x, y, width, height, r1, r2, r3, r4) {
+  let ctx = game.context;
+
+  //ctx.fillRect(x, y, width, height);
+  ctx.beginPath();
+  ctx.moveTo(x + r1, y);
+  ctx.lineTo(x + width - r1, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + r1);
+  ctx.lineTo(x + width, y + height - r2);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - r2, y + height);
+  ctx.lineTo(x + r2, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - r3);
+  ctx.lineTo(x, y + r3);
+  ctx.quadraticCurveTo(x, y, x + r4, y);
+  ctx.closePath();
+  ctx.fill();
+}
+
 export function setFontSize(size, font) {
   game.context.font = size + "px " + font;
 }
@@ -520,9 +538,10 @@ export function setTitle(title) {
 export async function copyTextToClipboard(text) {
   try {
     await navigator.clipboard.writeText(text);
-    alert("Text copied to clipboard");
+    notifications.push(new Notification("Command copied to clipboard"));
+    //alert("Text copied to clipboard");
   } catch (err) {
-    alert("Error in copying text: ", err);
+    //alert("Error in copying text: ", err);
   }
 }
 
@@ -741,4 +760,73 @@ export function SHA256(s) {
   }
   s = Utf8Encode(s);
   return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
+}
+
+/**************************************************************** Notification system*/
+
+let notifications = [];
+
+class Notification {
+  message = "No message set";
+  w;
+  h;
+  x;
+  color;
+  life;
+  alive = true;
+  fade = 0.01;
+  constructor(message, color = Notification.BLUE) {
+    this.message = message;
+    this.h = 40;
+    this.color = color;
+    this.life = 60 * 5;
+    console.log("nnee");
+  }
+
+  display(y) {
+    console.log(this.x);
+    setFontSize(20, "Oswald");
+    this.w = getTextWidth(this.message) + 40;
+    this.x = width - (this.w + 50) - 40;
+    fill(`rgb(41,41,41, ${this.fade})`);
+    roundedRect(this.x, y, this.w, this.h, 3);
+
+    fill(`rgb(255,0,0,${this.fade})`);
+    rounded_Rect(this.x + this.w - 18 - 5, y, 30, this.h, 3, 3, 0, 0);
+
+    fill(`rgb(255,255,255,${this.fade})`);
+    text(this.message, this.x + 10, y + 28);
+    setFontSize(15, "Oswald");
+    text("X", this.x + this.w - 12, y + 25);
+
+    //The X button
+
+    if (
+      mousePressed &&
+      inArea(mouseX, mouseY, this.x + this.w - 18 - 5, y, 30, this.h)
+    ) {
+      this.alive = false;
+    }
+
+    this.life--;
+    if (this.life < 0) {
+      this.fade -= 0.05;
+    } else {
+      if (this.fade < 1) this.fade += 0.05;
+    }
+
+    if (this.fade < 0) this.alive = false;
+  }
+}
+
+Notification.RED = "RED";
+Notification.GREEN = "GREEN";
+Notification.BLUE = "BLUE";
+
+export function renderNotifications() {
+  for (let i = 0; i < notifications.length; i++) {
+    //console.log(notifications[i]);
+    notifications[i].display(height - (i + 1) * 45);
+    if (!notifications[i].alive) notifications = removeItem(notifications, i);
+  }
 }
