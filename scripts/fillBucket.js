@@ -50,7 +50,7 @@ export function fillBucket(index, color) {
 
   while (checked.length > 0) {
     var index = checked.pop();
-    //Fill right tilea
+    //Fill right tile
     if (
       index + 1 < tilesPerRow * tilesPerCol &&
       index % tilesPerRow != tilesPerRow - 1 &&
@@ -84,9 +84,5 @@ export function fillBucket(index, color) {
       setTile(index + tilesPerRow, color);
       checked.push(index + tilesPerRow);
     }
-
-    ///if(checked.length < 1){
-
-    //}
   }
 }
