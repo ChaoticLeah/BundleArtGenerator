@@ -764,6 +764,8 @@ export function SHA256(s) {
 
 /**************************************************************** Notification system*/
 
+
+
 let notifications = [];
 
 class Notification {
@@ -775,12 +777,13 @@ class Notification {
   life;
   alive = true;
   fade = 0.01;
-  constructor(message, color = Notification.BLUE) {
+  link;
+  constructor(message, color = Notification.BLUE, lifetime = 5, link = null) {
     this.message = message;
     this.h = 40;
     this.color = color;
-    this.life = 60 * 5;
-    console.log("nnee");
+    this.life = 60 * lifetime;
+    this.link = link;
   }
 
   display(y) {
@@ -791,8 +794,21 @@ class Notification {
     fill(`rgb(41,41,41, ${this.fade})`);
     roundedRect(this.x, y, this.w, this.h, 3);
 
+    if (
+      this.link != null &&
+      mousePressed &&
+      inArea(mouseX, mouseY, this.x, y, this.w - 12, this.h)
+    ) {
+      open(this.link);
+    }
+
     fill(`rgb(255,0,0,${this.fade})`);
     rounded_Rect(this.x + this.w - 18 - 5, y, 30, this.h, 3, 3, 0, 0);
+
+    //The color bar
+    fill(this.color);
+    rounded_Rect(this.x, y, 3, this.h, 0, 0, 3, 3);
+
 
     fill(`rgb(255,255,255,${this.fade})`);
     text(this.message, this.x + 10, y + 28);
@@ -808,6 +824,9 @@ class Notification {
       this.alive = false;
     }
 
+
+
+
     this.life--;
     if (this.life < 0) {
       this.fade -= 0.05;
@@ -818,6 +837,9 @@ class Notification {
     if (this.fade < 0) this.alive = false;
   }
 }
+
+
+
 
 Notification.RED = "RED";
 Notification.GREEN = "GREEN";
@@ -830,3 +852,8 @@ export function renderNotifications() {
     if (!notifications[i].alive) notifications = removeItem(notifications, i);
   }
 }
+
+
+
+
+notifications.push(new Notification("Note: The bottom right pixel will be removed. Read Why Here", Notification.RED, 20, "./logs/bottom-pixel-removed.html"));
