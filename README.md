@@ -25,4 +25,4 @@ Roadmap:
 - [ ] Save Slots
 - [x] Color Picker
 - [ ] Updated UI with separate settings menu
-- [ ] Fill Bucket
+- [x] Fill Bucket

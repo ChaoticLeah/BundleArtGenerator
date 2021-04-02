@@ -764,8 +764,6 @@ export function SHA256(s) {
 
 /**************************************************************** Notification system*/
 
-
-
 let notifications = [];
 
 class Notification {
@@ -787,7 +785,6 @@ class Notification {
   }
 
   display(y) {
-    console.log(this.x);
     setFontSize(20, "Oswald");
     this.w = getTextWidth(this.message) + 40;
     this.x = width - (this.w + 50) - 40;
@@ -809,7 +806,6 @@ class Notification {
     fill(this.color);
     rounded_Rect(this.x, y, 3, this.h, 0, 0, 3, 3);
 
-
     fill(`rgb(255,255,255,${this.fade})`);
     text(this.message, this.x + 10, y + 28);
     setFontSize(15, "Oswald");
@@ -824,9 +820,6 @@ class Notification {
       this.alive = false;
     }
 
-
-
-
     this.life--;
     if (this.life < 0) {
       this.fade -= 0.05;
@@ -837,9 +830,6 @@ class Notification {
     if (this.fade < 0) this.alive = false;
   }
 }
-
-
-
 
 Notification.RED = "RED";
 Notification.GREEN = "GREEN";
@@ -853,7 +843,11 @@ export function renderNotifications() {
   }
 }
 
-
-
-
-notifications.push(new Notification("Note: The bottom right pixel will be removed. Read Why Here", Notification.RED, 20, "./logs/bottom-pixel-removed.html"));
+notifications.push(
+  new Notification(
+    "Note: The bottom right pixel will be removed. Read Why Here",
+    Notification.RED,
+    20,
+    "./logs/bottom-pixel-removed.html"
+  )
+);

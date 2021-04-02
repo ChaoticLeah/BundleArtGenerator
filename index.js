@@ -34,16 +34,24 @@ import {
   renderNotifications,
 } from "./scripts/toolbox.js";
 
+import { fillBucket } from "./scripts/fillBucket.js";
+
 export let states = {
-  game: "game",
   menu: "menu",
-  settings: "settings",
 };
 
 export let state = states.menu;
 export function setState(s) {
   state = s;
 }
+
+export let tools = {
+  PENCIL: "PENCIL",
+  FILL: "FILL",
+};
+export let tool = tools.PENCIL;
+
+export let selectColor = undefined;
 
 game.start();
 var lastRender = Date.now();
@@ -71,24 +79,6 @@ export let currentColor = "red";
 export function setCol(col) {
   currentColor = col;
 }
-
-/*export let colors = {
-  purple_stained_glass_pane: "purple",
-  magenta_stained_glass_pane: "magenta",
-  pink_stained_glass_pane: "pink",
-  blue_stained_glass_pane: "blue",
-  cyan_stained_glass_pane: "cyan",
-  light_blue_stained_glass_pane: "#20B2AA",
-  green_stained_glass_pane: "green",
-  lime_stained_glass_pane: "lime",
-  yellow_stained_glass_pane: "yellow",
-  orange_stained_glass_pane: "orange",
-  red_stained_glass_pane: "red",
-  white_stained_glass_pane: "white",
-  black_stained_glass_pane: "black",
-  grey_stained_glass_pane: "grey",
-  brown_stained_glass_pane: "brown",
-};*/
 
 export let colors = {
   purple: "purple_stained_glass_pane",
@@ -126,6 +116,13 @@ document.getElementById("loadAutosave").addEventListener("click", function () {
   else alert("Error: There is no save data");
   document.getElementById("loadAutosave").remove();
   //console.log(data);
+});
+
+document.getElementById("pencil").addEventListener("click", function () {
+  tool = tools.PENCIL;
+});
+document.getElementById("fill").addEventListener("click", function () {
+  tool = tools.FILL;
 });
 
 let glassPath = "./assets/GlassAssets/";
@@ -215,7 +212,13 @@ export function updateGameArea() {
         if (mouseDown) {
           //(index/tilesPerRow) + index % tilesPerRow
           //tiles[counter] = currentColor;
-          setTile(counter, currentColor);
+
+          if (tool == tools.FILL) {
+            console.log("filling");
+            selectColor = tiles[counter];
+            fillBucket(counter, currentColor);
+          } else setTile(counter, currentColor);
+
           localStorage.setItem(
             "Bundle_Art_Autosave",
             JSON.stringify({ data: tiles })
