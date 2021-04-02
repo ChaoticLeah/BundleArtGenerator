@@ -32,6 +32,11 @@ export function setTile(i, colorID) {
 let colorArray;
 export function resetColorArray() {
   colorArray = undefined;
+  tiles = new Array(tilesPerRow * tilesPerCol);
+  colorArray = Object.keys(colors);
+  for (let i = 0; i < tiles.length; i++) {
+    tiles[i] = "black";
+  }
 }
 export function colorPicker() {
   if (!colorArray) {
