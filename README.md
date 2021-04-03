@@ -26,3 +26,4 @@ Roadmap:
 - [x] Color Picker
 - [ ] Updated UI with separate settings menu
 - [x] Fill Bucket
+- [ ] Undo and redo
