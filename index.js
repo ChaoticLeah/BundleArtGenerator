@@ -9,28 +9,19 @@ import { copyCommand } from "./scripts/commandGen.js";
 import {
   game,
   text,
-  textWraped,
   fill,
-  setFontSize,
   renderImage,
   width,
   height,
   resetMousePressed,
-  mousePressed,
   mouseDown,
   mouseX,
   mouseY,
   inArea,
   rect,
-  keyPressed,
-  keys,
-  keyReleased,
-  button,
   background,
   setTitle,
   setIcon,
-  keyDown,
-  keyPushed,
   renderNotifications,
 } from "./scripts/toolbox.js";
 
@@ -39,11 +30,6 @@ import { fillBucket } from "./scripts/fillBucket.js";
 export let states = {
   menu: "menu",
 };
-
-export let state = states.menu;
-export function setState(s) {
-  state = s;
-}
 
 export let tools = {
   PENCIL: "PENCIL",

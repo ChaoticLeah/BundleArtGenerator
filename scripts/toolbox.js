@@ -1,4 +1,4 @@
-import { updateGameArea, fps, setState, states } from "../index.js";
+import { updateGameArea, fps } from "../index.js";
 
 export let width = window.innerWidth;
 export let height = window.innerHeight;

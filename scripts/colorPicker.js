@@ -16,7 +16,6 @@ import {
   mouseY,
   rect,
   renderImage,
-  setTitle,
   width,
 } from "./toolbox.js";
 
