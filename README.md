@@ -14,6 +14,8 @@ Features:
 - All the colors supported by minecraft stained glass
 - Autosave!
 - Just like any other pixel art program!
+- Support for all versions with a version select!
+
 
 > Note: This may not always work due to a minecraft bug.
 
@@ -27,3 +29,4 @@ Roadmap:
 - [ ] Updated UI with separate settings menu
 - [x] Fill Bucket
 - [ ] Undo and redo
+- [x] Version select
