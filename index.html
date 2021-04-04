@@ -43,6 +43,28 @@
       -ms-transform: translateX(50%);
       transform: translateX(50%);
     }
+    #VersionSelect{
+      background-color: #cbaa4b;
+      border: none;
+      color: white;
+      padding: 7px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+      position: absolute;
+      bottom: 66px;
+      right: 50%;
+      -ms-transform: translateX(50%);
+      transform: translateX(50%);
+    }
+
+  #VersionSelect>option{
+    /*background-color: red;
+    position: relative;
+    top:0px;*/
+  }
 
     #howto {
       position: absolute;
@@ -127,6 +149,13 @@
       </a>
     </h1>
     <button id="Copy">Copy Command!</button>
+
+    <select name="Version" id="VersionSelect">
+      <option value="0">20w45a - 20w49a</option>
+      <option value="1" selected>20w51a+ (Latest)</option>
+    </select>
+
+
     <p id="howto">
       How Does it Work? <br />
       <br />Make some pixel art here. Click copy and put it in a command block,

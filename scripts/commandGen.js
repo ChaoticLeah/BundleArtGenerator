@@ -11,10 +11,10 @@ export function copyCommand() {
   let command = commandStart;
 
   let counter = 0;
-
+  
   tiles.forEach((e) => {
     //this line was added as a quickfix. This removes the bottom right pixel.
-    if(counter >= tiles.length - 1)return;
+    if(counter >= tiles.length - 1 && document.getElementById("VersionSelect").value == "1")return;
     if (counter != 0) command += ",";
     
     command += commandModule.replace("panecolhere", colors[e]);
