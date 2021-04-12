@@ -30,3 +30,8 @@ Roadmap:
 - [x] Fill Bucket
 - [ ] Undo and redo
 - [x] Version select
+
+
+Screenshots:
+
+![image](https://user-images.githubusercontent.com/45321184/114342313-7d5d9880-9b10-11eb-9392-3ae5b8eeb7b9.png)
