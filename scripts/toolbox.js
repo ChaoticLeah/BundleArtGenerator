@@ -762,6 +762,12 @@ export function SHA256(s) {
   return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 }
 
+export function loadImg(url) {
+  let image = new Image();
+  image.src = url;
+  return image;
+}
+
 /**************************************************************** Notification system*/
 
 let notifications = [];

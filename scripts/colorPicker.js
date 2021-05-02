@@ -57,7 +57,7 @@ export function colorPicker() {
         tileH
       );
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       fill(colorArray[i]);
       rect(width - tileW - xcounter * tileW, ycounter * tileH, tileW, tileH);
     }

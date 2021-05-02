@@ -27,6 +27,9 @@ import {
 
 import { fillBucket } from "./scripts/fillBucket.js";
 
+//Import it so it inits
+import {} from "./scripts/imageToBundleArt.js";
+
 export let states = {
   menu: "menu",
 };
@@ -239,7 +242,6 @@ export function updateGameArea() {
           );
         }
       }
-
       counter++;
     }
   }
